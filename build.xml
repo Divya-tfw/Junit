@@ -49,5 +49,17 @@
        </batchtest>
     </junit>
   </target>
+  
+  <target name="gen" depends ="testsuite">
+                <property name="genReportDir" location="${target.dir}"/>
+                <delete dir="${junit.out.dir.html}"/>
+     <mkdir  dir="${junit.out.dir.html}"/>
+                <junitreport todir="${junit.out.dir.html}">
+                        <fileset dir="${junit.out.dir.xml}">
+                                <include name="**/TEST-*.xml"/>
+                        </fileset>
+                        <report format="frames" todir="${target.dir}/html"/>
+                </junitreport>
+        </target>
 
 </project>
